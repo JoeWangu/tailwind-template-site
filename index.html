@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <!-- Theme script to avoid FOUC -->
+    <script>
+      document.documentElement.classList.toggle(
+        "dark",
+        localStorage.theme === "dark" ||
+          (!localStorage.theme &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+      );
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/index.css" />
+    <title>Website</title>
+  </head>
+  <body
+    class="min-h-screen flex items-center justify-center bg-fuchsia-200 dark:bg-gray-900"
+  >
+    <!-- SVG template start -->
+    <svg class="hidden">
+      <symbol id="icon-pc" viewBox="0 0 24 24">
+        <g>
+          <rect x="4" y="4" width="16" height="12" rx="2" fill="currentColor" />
+          <rect x="8" y="18" width="8" height="2" fill="currentColor" />
+          <path
+            d="M10 18v2m4-2v2"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+        </g>
+      </symbol>
+      <symbol id="icon-sun" viewBox="0 0 24 24">
+        <g>
+          <circle cx="12" cy="12" r="5" fill="currentColor" />
+          <path
+            d="M12 2v2m0 16v2m10-10h-2M4 12H2m16.364-5.364l-1.414 1.414M7.05 17.05l-1.414 1.414m12.728 0l-1.414-1.414M7.05 6.95l-1.414-1.414"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+        </g>
+      </symbol>
+      <symbol id="icon-moon" viewBox="0 0 24 24">
+        <g>
+          <path
+            d="M21 12.79A9 9 0 1112.21 3a7 7 0 008.79 9.79z"
+            fill="currentColor"
+          />
+        </g>
+      </symbol>
+    </svg>
+
+    <!-- Header -->
+    <header></header>
+
+    <!-- Main -->
+    <main>
+      <h1 class="text-3xl text-brand dark:text-mint-500 font-family-azonix">
+        Tailwind-style Theme Toggle
+      </h1>
+    </main>
+
+    <!-- Footer -->
+    <footer></footer>
+
+    <!-- Theme toggle -->
+    <div
+      id="theme-toggle"
+      class="fixed bottom-4 right-4 bg-blue-200 dark:bg-brand p-1 rounded-full flex items-center shadow-md"
+    >
+      <div
+        id="theme-highlight"
+        class="absolute top-1 left-1 w-8 h-8 bg-white dark:bg-black rounded-full transition-all duration-300 shadow-sm"
+      ></div>
+      <!-- icon pc -->
+      <button
+        data-theme="system"
+        class="theme-btn relative z-10 w-8 h-8 flex items-center justify-center"
+        title="System"
+        aria-label="System theme"
+      >
+        <svg
+          class="w-5 h-5 text-black"
+          fill="currentColor"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 470 470"
+          xml:space="preserve"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+        >
+          <use href="#icon-pc"></use>
+        </svg>
+      </button>
+      <!-- icon pc end -->
+
+      <!-- icon sun -->
+      <button
+        data-theme="light"
+        class="theme-btn relative z-10 w-8 h-8 flex items-center justify-center"
+        title="Light"
+        aria-label="Light theme"
+      >
+        <svg
+          class="w-5 h-5 text-black"
+          fill="currentColor"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 470 470"
+          xml:space="preserve"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+        >
+          <use href="#icon-sun"></use>
+        </svg>
+      </button>
+      <!-- icon sun end -->
+
+      <!-- icon moon -->
+      <button
+        data-theme="dark"
+        class="theme-btn relative z-10 w-8 h-8 flex items-center justify-center"
+        title="Dark"
+        aria-label="Dark theme"
+      >
+        <svg
+          class="w-5 h-5 text-black"
+          fill="currentColor"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 470 470"
+          xml:space="preserve"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+        >
+          <use href="#icon-moon"></use>
+        </svg>
+      </button>
+      <!-- icon moon end -->
+    </div>
+
+    <!-- Scripts -->
+    <script src="./assets/js/main.js"></script>
+  </body>
+</html>

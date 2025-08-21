@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+@font-face {
+    font-family: 'Aexir';
+    src: url('/assets/fonts/AexirRegular.woff2') format('woff2'),
+        url('/assets/fonts/AexirRegular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Azonix';
+    src: url('/assets/fonts/AzonixRegular.woff2') format('woff2'),
+        url('/assets/fonts/AzonixRegular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Rubik Wet Paint';
+    src: url('/assets/fonts/RubikWetPaint-Regular.woff2') format('woff2'),
+        url('/assets/fonts/RubikWetPaint-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('/assets/fonts/Roboto-Regular.woff2') format('woff2'),
+        url('/assets/fonts/Roboto-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+@theme {
+  /* Custom Colors */
+  --color-mint-500: oklch(0.72 0.11 178);
+  --color-mint-600: oklch(0.65 0.12 178);
+  --color-rose-500: oklch(0.75 0.15 350);
+  --color-brand: oklch(0.33 0.11 258);
+
+  /* Custom Fonts */
+  --font-family-aexir: 'Aexir', sans-serif;
+  --font-family-azonix: 'Azonix', sans-serif;
+  --font-family-rubik-wet-paint: 'Rubik Wet Paint', sans-serif;
+  --font-family-display: 'Aexir', 'Inter', sans-serif;
+  --font-family-body: 'Roboto', sans-serif;
+
+  /* Custom Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+}
+
+/* Tailwind-style CSS for theme toggle */
+#theme-toggle {
+  --system-pos: 0rem;
+  --light-pos: 2rem;
+  --dark-pos: 4rem;
+}
+
+#theme-highlight {
+  transform: translateX(var(--highlight-pos, var(--system-pos)));
+}
+
+/* Active button state */
+.theme-btn.active svg {
+  stroke: #3b82f6; /* Blue color for active state */
+  stroke-width: 2.5;
+}
+
+/* Ensure smooth transitions */
+#theme-highlight,
+.theme-btn svg {
+  transition: all 0.3s ease;
+}
