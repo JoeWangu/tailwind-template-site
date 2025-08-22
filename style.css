@@ -1,39 +1,39 @@
 @import "tailwindcss";
 
 @font-face {
-    font-family: 'Aexir';
-    src: url('/assets/fonts/AexirRegular.woff2') format('woff2'),
-        url('/assets/fonts/AexirRegular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Aexir";
+  src: url("/assets/fonts/AexirRegular.woff2") format("woff2"),
+    url("/assets/fonts/AexirRegular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Azonix';
-    src: url('/assets/fonts/AzonixRegular.woff2') format('woff2'),
-        url('/assets/fonts/AzonixRegular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Azonix";
+  src: url("/assets/fonts/AzonixRegular.woff2") format("woff2"),
+    url("/assets/fonts/AzonixRegular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Rubik Wet Paint';
-    src: url('/assets/fonts/RubikWetPaint-Regular.woff2') format('woff2'),
-        url('/assets/fonts/RubikWetPaint-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Rubik Wet Paint";
+  src: url("/assets/fonts/RubikWetPaint-Regular.woff2") format("woff2"),
+    url("/assets/fonts/RubikWetPaint-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Roboto';
-    src: url('/assets/fonts/Roboto-Regular.woff2') format('woff2'),
-        url('/assets/fonts/Roboto-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Roboto";
+  src: url("/assets/fonts/Roboto-Regular.woff2") format("woff2"),
+    url("/assets/fonts/Roboto-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -45,11 +45,12 @@
   --color-brand: oklch(0.33 0.11 258);
 
   /* Custom Fonts */
-  --font-family-aexir: 'Aexir', sans-serif;
-  --font-family-azonix: 'Azonix', sans-serif;
-  --font-family-rubik-wet-paint: 'Rubik Wet Paint', sans-serif;
-  --font-family-display: 'Aexir', 'Inter', sans-serif;
-  --font-family-body: 'Roboto', sans-serif;
+  --font-family-aexir: "Aexir", sans-serif;
+  --font-family-azonix: "Azonix", sans-serif;
+  --font-family-rubik-wet-paint: "Rubik Wet Paint", sans-serif;
+  --font-family-roboto: "Roboto", sans-serif;
+  --font-family-display: "Aexir", "Inter", sans-serif;
+  --font-family-body: "Roboto", sans-serif;
 
   /* Custom Spacing */
   --spacing-xs: 0.5rem;
@@ -77,4 +78,18 @@
 #theme-highlight,
 .theme-btn svg {
   transition: all 0.3s ease;
+}
+
+/* Smooth transition for mobile menu */
+#mobile-menu,
+#profile-menu {
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  transform: translateY(-10%);
+  opacity: 0;
+}
+
+#mobile-menu.show,
+#profile-menu.show {
+  transform: translateY(0);
+  opacity: 1;
 }
