@@ -20,7 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Apply theme and update UI
   function setTheme(mode) {
-    const isDark = mode === "dark" || (mode === "system" && prefersDark.matches);
+    const isDark =
+      mode === "dark" || (mode === "system" && prefersDark.matches);
     document.documentElement.classList.toggle("dark", isDark);
     // Store theme or clear for system mode
     if (mode === "system") {
@@ -42,12 +43,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Handle system theme changes with debounce
-  prefersDark.addEventListener("change", debounce(() => {
-    // Only apply system theme if no explicit theme is set
-    if (!localStorage.getItem("theme")) {
-      setTheme("system");
-    }
-  }, 100));
+  prefersDark.addEventListener(
+    "change",
+    debounce(() => {
+      // Only apply system theme if no explicit theme is set
+      if (!localStorage.getItem("theme")) {
+        setTheme("system");
+      }
+    }, 100)
+  );
 
   // Button click handlers
   btns.forEach((btn) =>
@@ -56,4 +60,47 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initialize theme
   setTheme(localStorage.getItem("theme") || "system");
+
+  // ---------------------------------- Mobile menu toggle ------------------------------------ //
+  const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const profileBtn = document.getElementById("profile-btn");
+  const profileMenu = document.getElementById("profile-menu");
+
+  mobileMenuBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    mobileMenu.classList.toggle("show");
+    mobileMenu.classList.toggle("hidden");
+    mobileMenuBtn.setAttribute(
+      "aria-expanded",
+      mobileMenu.classList.contains("show")
+    );
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+      mobileMenu.classList.remove("show");
+      mobileMenu.classList.add("hidden");
+      mobileMenuBtn.setAttribute("aria-expanded", "false");
+    }
+    if (!profileMenu.contains(e.target) && !profileBtn.contains(e.target)) {
+      profileMenu.classList.remove("show");
+      profileMenu.classList.add("hidden");
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth >= 640) {
+      mobileMenu.classList.remove("show");
+      mobileMenu.classList.add("hidden");
+      mobileMenuBtn.setAttribute("aria-expanded", "false");
+    }
+  });
+
+  // Profile toggle (optional)
+  profileBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    profileMenu.classList.toggle("show");
+    profileMenu.classList.toggle("hidden");
+  });
 });
