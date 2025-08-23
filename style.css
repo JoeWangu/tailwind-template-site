@@ -45,12 +45,12 @@
   --color-brand: oklch(0.33 0.11 258);
 
   /* Custom Fonts */
-  --font-family-aexir: "Aexir", sans-serif;
-  --font-family-azonix: "Azonix", sans-serif;
-  --font-family-rubik-wet-paint: "Rubik Wet Paint", sans-serif;
-  --font-family-roboto: "Roboto", sans-serif;
-  --font-family-display: "Aexir", "Inter", sans-serif;
-  --font-family-body: "Roboto", sans-serif;
+  --font-aexir: "Aexir", sans-serif;
+  --font-azonix: "Azonix", sans-serif;
+  --font-rubik-wet-paint: "Rubik Wet Paint", sans-serif;
+  --font-roboto: "Roboto", sans-serif;
+  --font-display: "Aexir", "Inter", sans-serif;
+  --font-body: "Roboto", sans-serif;
 
   /* Custom Spacing */
   --spacing-xs: 0.5rem;
@@ -81,15 +81,101 @@
 }
 
 /* Smooth transition for mobile menu */
-#mobile-menu,
-#profile-menu {
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-  transform: translateY(-10%);
-  opacity: 0;
+@layer utilities {
+  /* Mobile menu open state */
+  .open {
+    @apply opacity-100 translate-y-0 scale-100 pointer-events-auto;
+  }
+
+  /* Initial hidden state for items */
+  .menu-item {
+    @apply opacity-0 -translate-y-2 transition-all duration-500;
+    transition-timing-function: cubic-bezier(
+      0.34,
+      1.8,
+      0.64,
+      1
+    ); /* bounce easing */
+  }
+
+  /* Animate items in when menu is open */
+  .open .menu-item {
+    @apply opacity-100 translate-y-0;
+  }
+
+  /* Opening stagger (sequential down) */
+  .open .menu-item:nth-child(1) {
+    transition-delay: 100ms;
+  }
+  .open .menu-item:nth-child(2) {
+    transition-delay: 200ms;
+  }
+  .open .menu-item:nth-child(3) {
+    transition-delay: 300ms;
+  }
+  .open .menu-item:nth-child(4) {
+    transition-delay: 400ms;
+  }
+
+  /* Closing stagger (sequential up) */
+  .menu-item:nth-child(1) {
+    transition-delay: 400ms;
+  }
+  .menu-item:nth-child(2) {
+    transition-delay: 300ms;
+  }
+  .menu-item:nth-child(3) {
+    transition-delay: 200ms;
+  }
+  .menu-item:nth-child(4) {
+    transition-delay: 100ms;
+  }
 }
 
-#mobile-menu.show,
-#profile-menu.show {
-  transform: translateY(0);
-  opacity: 1;
-}
+/* / ----- Items show up from left to right ----- /
+@layer utilities {
+  / Mobile menu open state /
+  .open {
+    @apply opacity-100 translate-y-0 scale-100 pointer-events-auto;
+  }
+
+  / Initial hidden state for items /
+  .menu-item {
+    @apply opacity-0 translate-x-[-10px] transition-all duration-300 ease-out;
+  }
+
+  / Animate items in when menu is open /
+  .open .menu-item {
+    @apply opacity-100 translate-x-0;
+  }
+
+  / Stagger delays /
+  .open .menu-item:nth-child(1) { transition-delay: 100ms; }
+  .open .menu-item:nth-child(2) { transition-delay: 200ms; }
+  .open .menu-item:nth-child(3) { transition-delay: 300ms; }
+  .open .menu-item:nth-child(4) { transition-delay: 400ms; }
+} */
+
+/* ----- Items show up from top to down ----- */
+/* @layer utilities {
+  / Mobile menu open state /
+  .open {
+    @apply opacity-100 translate-y-0 scale-100 pointer-events-auto;
+  }
+
+  / Initial hidden state for items /
+  .menu-item {
+    @apply opacity-0 -translate-y-15 transition-all duration-300 ease-out;
+  }
+
+  / Animate items in when menu is open /
+  .open .menu-item {
+    @apply opacity-100 translate-y-0;
+  }
+
+  / Stagger delays /
+  .open .menu-item:nth-child(1) { transition-delay: 100ms; }
+  .open .menu-item:nth-child(2) { transition-delay: 200ms; }
+  .open .menu-item:nth-child(3) { transition-delay: 300ms; }
+  .open .menu-item:nth-child(4) { transition-delay: 400ms; }
+} */
